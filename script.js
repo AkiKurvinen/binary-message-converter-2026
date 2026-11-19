@@ -13,7 +13,7 @@ const gapInput = document.getElementById("gap");
 const intervalInput = document.getElementById("interval");
 
 const colors = {
-  LIGHTNESS: ["rgb(40, 40, 40)", "rgb(255, 255, 255)"],
+  LIGHTNESS: ["rgb(0, 0, 0)", "rgb(255, 255, 255)"],
   HUE_RG: ["rgb(0, 255, 0)", "rgb(255, 0, 0)"],
   HUE_GB: ["rgb(0, 0, 255)", "rgb(0, 255, 0)"],
   HUE_BR: ["rgb(255, 0, 0)", "rgb(0, 0, 255)"]
