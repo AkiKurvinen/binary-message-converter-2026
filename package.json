@@ -1,0 +1,7 @@
+{
+  "name": "binary-message-converter-2026",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A static optical binary message transmitter",
+  "license": "MIT"
+}
