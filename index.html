@@ -22,7 +22,7 @@
           <input id="sync-byte" name="sync-byte" type="text" value="11001100" pattern="[01]{8}" maxlength="8" required
             spellcheck="false">
 
-          <label for="message">Message <span>UTF-8</span></label>
+          <label for="message">Message <span>Extended ASCII</span></label>
           <textarea id="message" name="message" rows="3" spellcheck="false">Moro</textarea>
 
           <label for="color-mode">Color mode</label>
@@ -65,6 +65,7 @@
           <span id="position">Ready to transmit</span>
           <strong id="bit">—</strong>
         </div>
+        <p class="hint">Message text as binary (extended ASCII)<code id="message-bits" class="binary-preview"></code></p>
         <p class="hint">The frame starts with the start byte, followed by the message bytes, most significant bit first.
         </p>
       </section>

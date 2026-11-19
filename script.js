@@ -11,6 +11,8 @@ const bitDisplay = document.getElementById("bit");
 const error = document.getElementById("error");
 const gapInput = document.getElementById("gap");
 const intervalInput = document.getElementById("interval");
+const messageInput = document.getElementById("message");
+const messageBits = document.getElementById("message-bits");
 
 const colors = {
   LIGHTNESS: ["rgb(0, 0, 0)", "rgb(255, 255, 255)"],
@@ -20,6 +22,18 @@ const colors = {
 };
 
 let timer;
+
+function getMessageBytes() {
+  const bytes = Array.from(messageInput.value, (character) => character.codePointAt(0));
+  return bytes.every((byte) => byte <= 0xff) ? bytes : null;
+}
+
+function updateMessageBits() {
+  const bytes = getMessageBytes();
+  messageBits.textContent = bytes === null
+    ? "Only extended ASCII characters (0-255) are supported"
+    : bytes.map((byte) => byte.toString(2).padStart(8, "0")).join(" ") || "—";
+}
 
 function darken() {
   swatch.style.backgroundColor = "rgb(0, 0, 0)";
@@ -47,8 +61,13 @@ form.addEventListener("submit", (event) => {
   }
   error.textContent = "";
 
+  const message = getMessageBytes();
+  if (message === null) {
+    error.textContent = "Message must contain extended ASCII characters (0-255) only.";
+    return;
+  }
+
   const syncByte = parseInt(document.getElementById("sync-byte").value, 2);
-  const message = new TextEncoder().encode(document.getElementById("message").value);
   const bytes = [syncByte, ...message];
   const mode = document.getElementById("color-mode").value;
   let bitIndex = 0;
@@ -89,4 +108,6 @@ form.addEventListener("submit", (event) => {
   nextBit();
 });
 
+messageInput.addEventListener("input", updateMessageBits);
+updateMessageBits();
 stopButton.addEventListener("click", stop);

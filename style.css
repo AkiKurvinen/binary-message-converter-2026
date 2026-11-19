@@ -138,6 +138,13 @@ button:focus-visible {
   margin: 12px 0 0;
 }
 
+.binary-preview {
+  display: block;
+  color: #eef2ff;
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+
 .actions {
   display: flex;
   gap: 10px;
