@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,43 +9,41 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
   <main>
-    <header>
-      <p class="eyebrow">Optical transmitter</p>
-      <h1>Binary Message Converter</h1>
-      <p>Turn a message into a repeating sequence of colored bits.</p>
-    </header>
-
     <div class="layout">
       <form id="transmitter-form">
+        <h1>Message Converter</h1>
         <fieldset id="settings">
+
           <legend>Frame settings</legend>
           <label for="sync-byte">Start byte <span>8 binary digits</span></label>
-          <input id="sync-byte" name="sync-byte" type="text" value="11110011" pattern="[01]{8}" maxlength="8" required spellcheck="false">
+          <input id="sync-byte" name="sync-byte" type="text" value="11001100" pattern="[01]{8}" maxlength="8" required
+            spellcheck="false">
 
           <label for="message">Message <span>UTF-8</span></label>
-          <textarea id="message" name="message" rows="3" spellcheck="false">@</textarea>
+          <textarea id="message" name="message" rows="3" spellcheck="false">Moro</textarea>
 
           <label for="color-mode">Color mode</label>
           <select id="color-mode" name="color-mode">
-            <option value="HUE_RG">Red / green</option>
-            <option value="HUE_GB">Green / blue</option>
-            <option value="HUE_BR">Blue / red</option>
-            <option value="LIGHTNESS">Bright / dim white</option>
+            <option value="HUE_RG">Red / Green</option>
+            <option value="HUE_GB">Green / Blue</option>
+            <option value="HUE_BR">Blue / Red</option>
+            <option value="LIGHTNESS" selected>Bright / Dark</option>
           </select>
 
           <div class="timings">
             <div>
               <label for="interval">Bit duration <span>ms</span></label>
-              <input id="interval" name="interval" type="number" value="700" min="1" max="60000" step="1" required>
+              <input id="interval" name="interval" type="number" value="1000" min="1" max="60000" step="1" required>
             </div>
             <div>
               <label for="gap">Dark gap <span>ms</span></label>
-              <input id="gap" name="gap" type="number" value="100" min="0" max="59999" step="1" required>
+              <input id="gap" name="gap" type="number" value="0" min="0" max="59999" step="1" required>
             </div>
           </div>
-          <p class="hint">The dark gap is part of each bit’s duration.</p>
+          <p class="hint">The dark gap is part of each bit's duration.</p>
         </fieldset>
         <div class="actions">
           <button id="start" type="submit">Start transmitting</button>
@@ -66,10 +65,11 @@
           <span id="position">Ready to transmit</span>
           <strong id="bit">—</strong>
         </div>
-        <p class="hint">The frame starts with the start byte, followed by the message bytes, most significant bit first.</p>
+        <p class="hint">The frame starts with the start byte, followed by the message bytes, most significant bit first.
+        </p>
       </section>
     </div>
-    <p class="note">Flashing colors may affect people with photosensitive conditions. Browser timing can vary, especially in background tabs.</p>
   </main>
 </body>
+
 </html>
